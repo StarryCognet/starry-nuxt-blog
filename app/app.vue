@@ -227,9 +227,18 @@ const toggleMenu = () => {
       // 设置动画目标元素为所有.menu-item类元素
       targets: ".menu-item",
       // 设置元素的X轴平移动画，从左侧100px移动到原始位置
-      translateX: [-300, 0],
-      translateY: [-100, 0],
-      rotate: [0, 360],
+      translateX: [function() {
+        return anime.random(-600, 600);
+      }, 0],
+      translateY: [function() {
+        return anime.random(-600, 600);
+      }, 0],
+      rotate: [function() {
+        return anime.random(720, 0);
+      }, 0],
+      scale: [function() {
+        return anime.random(1, 10);
+      }, 1],
       // 设置元素的透明度动画，从完全透明到完全不透明
       opacity: [0, 1],
       // 设置动画延迟，每个元素依次延迟100ms执行
@@ -629,21 +638,22 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 1px solid var(--primary);
-  background: var(--toggle-bg);
-  color: var(--text-color);
+  /* border: 1px solid var(--primary); */
+  border: none;
+  /* background: var(--toggle-bg); */
+  /* color: var(--text-color); */
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   transition: transform 0.3s ease;
+  background-color: #ffffff00;
   font-size: 1.2rem;
 }
 
 .theme-toggle-btn:hover {
   transform: rotate(15deg) scale(1.1);
-  background: var(--primary);
   color: #fff;
 }
 
