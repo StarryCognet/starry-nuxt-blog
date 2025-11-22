@@ -578,7 +578,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--bg-color);
+  /* background: var(--bg-color); 修改为毛玻璃效果 */
+  background: rgba(5, 7, 10, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 90;
   display: flex;
   align-items: center;
@@ -591,6 +594,15 @@ body {
 .menu-bar.open {
   opacity: 1;
   visibility: visible;
+}
+
+/* 为深色和浅色模式分别设置菜单背景 */
+.dark-mode .menu-bar {
+  background: rgba(5, 7, 10, 0.8);
+}
+
+.light-mode .menu-bar {
+  background: rgba(240, 242, 245, 0.8);
 }
 
 .menu-list {
