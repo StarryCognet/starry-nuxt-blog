@@ -21,10 +21,11 @@ const COLORS = {
 
 // 菜单选项
 const menuItems = [
-  { id: 1, label: "首页", link: "#" },
-  { id: 2, label: "关于", link: "#" },
-  { id: 3, label: "作品", link: "#" },
-  { id: 4, label: "联系", link: "#" },
+  { id: 1, label: "首页", link: "blog.starrymiku.com" },
+  { id: 2, label: "游戏", link: "tetris.games.starrycognition.cn" },
+  { id: 3, label: "博文", link: "starrymiku.com" },
+  { id: 4, label: "作品", link: "#" },
+  { id: 5, label: "联系", link: "#" },
 ];
 
 // 内容节点数据
