@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, reactive } from "vue";
+import { ref, onMounted, onUnmounted, reactive, watch } from "vue";
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const isDark = defineModel<boolean>('isDark', { required: true });
@@ -44,7 +44,7 @@ class Particle {
   }
 
   setColor() {
-    // 根据深浅模式调整粒子颜色
+    // 修复粒子颜色逻辑：深色主题用白色粒子，浅色主题用深色粒子
     const baseColor = isDark.value ? "255, 255, 255" : "30, 30, 30";
     this.color = Math.random() > 0.9 ? COLORS.primary : `rgba(${baseColor}, ${isDark.value ? 0.8 : 0.4})`;
   }
@@ -113,11 +113,10 @@ const runAnimationLoop = () => {
     // 鼠标交互连线
     const dx = p1.x - mouse.x;
     const dy = p1.y - mouse.y;
-    // 滚动时需要加上 scrollY 修正鼠标在 Canvas 上的相对位置
-    // 但这里 Canvas 是 fixed 的，所以不需要加 scrollY
     const distance = Math.sqrt(dx * dx + dy * dy);
     if (distance < 150) {
       ctx!.beginPath();
+      // 修复鼠标连线颜色逻辑：深色主题用白色连线，浅色主题用黑色连线
       ctx!.strokeStyle = isDark.value ? `rgba(255, 255, 255, ${1 - distance / 150})` : `rgba(0, 0, 0, ${1 - distance / 150})`;
       ctx!.lineWidth = 1;
       ctx!.moveTo(p1.x, p1.y);
@@ -140,9 +139,21 @@ defineExpose({
     particles.forEach((p) => p.setColor());
   },
   setMousePosition: (x: number, y: number) => {
-    mouse.x = x;
-    mouse.y = y;
+    // 修复鼠标位置偏移问题
+    const rect = canvasRef.value?.getBoundingClientRect();
+    if (rect) {
+      mouse.x = x - rect.left;
+      mouse.y = y - rect.top;
+    } else {
+      mouse.x = x;
+      mouse.y = y;
+    }
   }
+});
+
+// 监听主题变化，自动更新粒子颜色
+watch(isDark, () => {
+  particles.forEach((p) => p.setColor());
 });
 
 onMounted(() => {
@@ -151,8 +162,15 @@ onMounted(() => {
 
   window.addEventListener("resize", initCanvas);
   window.addEventListener("mousemove", (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
+    // 使用与 setMousePosition 一致的鼠标位置计算逻辑
+    const rect = canvasRef.value?.getBoundingClientRect();
+    if (rect) {
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    } else {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }
   });
 });
 

@@ -81,6 +81,7 @@ onMounted(() => {
       // 获取Vue组件实例并调用方法
       const vueInstance = (app as any).__vueParentComponent;
       if (vueInstance && vueInstance.ctx && vueInstance.ctx.setBackgroundMousePosition) {
+        // 修复鼠标坐标传递
         vueInstance.ctx.setBackgroundMousePosition(e.clientX, e.clientY);
       }
     }

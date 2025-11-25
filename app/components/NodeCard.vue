@@ -50,7 +50,7 @@ defineEmits<{
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
-  border-radius: 4px;
+  border-radius: 25px;
   min-height: 180px;
   display: flex;
   flex-direction: column;

@@ -102,9 +102,6 @@ const toggleTheme = () => {
       // 2. 动画覆盖全屏后，切换实际的状态
       isDark.value = !isDark.value;
 
-      // 更新粒子颜色
-      backgroundCanvasRef.value?.updateParticlesColor();
-
       // 3. 渐隐转场层
       anime({
         targets: transitionLayer,
