@@ -1,5 +1,5 @@
 {
-  "name": "starry-blog",
+  "name": "starry-nuxt-blog",
   "pages_build_output_dir": "dist",
   "d1_databases": [
     {
