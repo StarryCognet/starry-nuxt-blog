@@ -1,0 +1,12 @@
+{
+  "name": "starry-blog",
+  "pages_build_output_dir": "dist",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "learn-db",
+      "database_id": "8f5256dc-ca82-47bf-9b48-3518acbb1145",
+      "migrations_dir": "drizzle"
+    }
+  ]
+}
