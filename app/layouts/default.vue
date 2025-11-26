@@ -50,9 +50,9 @@ const COLORS = {
 
 // 菜单选项
 const menuItems = [
-  { id: 1, label: "首页", link: "blog.starrymiku.com" },
+  { id: 1, label: "首页", link: "/" },
   { id: 2, label: "游戏", link: "tetris.games.starrycognition.cn" },
-  { id: 3, label: "博文", link: "starrymiku.com" },
+  { id: 3, label: "博文", link: "/blog" },
   { id: 4, label: "作品", link: "#" },
   { id: 5, label: "联系", link: "#" },
 ];
