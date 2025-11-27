@@ -1,9 +1,11 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['nitro-cloudflare-dev'],
   nitro: {
     preset: 'cloudflare-pages',
+    prerender: {
+      autoSubfolderIndex: false  // 修复路由匹配
+    }
   },
 })
