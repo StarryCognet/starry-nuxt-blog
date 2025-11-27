@@ -1,11 +1,11 @@
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ['nitro-cloudflare-dev'],
+  modules: ["nitro-cloudflare-dev"],
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: "cloudflare-pages",
     prerender: {
-      autoSubfolderIndex: false  // 修复路由匹配
-    }
+      autoSubfolderIndex: true,
+    },
   },
-})
+});

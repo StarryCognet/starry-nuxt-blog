@@ -1,0 +1,238 @@
+# 接收消息
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.0.1
+info:
+  title: ''
+  description: ''
+  version: 1.0.0
+paths:
+  /messages/get:
+    get:
+      summary: 接收消息
+      deprecated: false
+      description: ''
+      tags:
+        - 聊天页面
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        user:
+                          type: string
+                        msg:
+                          type: string
+                        likes:
+                          type: integer
+                        created_at:
+                          type: integer
+                required:
+                  - code
+                  - message
+                  - data
+          headers: {}
+          x-apifox-name: 成功
+      security: []
+      x-apifox-folder: 聊天页面
+      x-apifox-status: developing
+      x-run-in-apifox: https://app.apifox.com/web/project/7261810/apis/api-366163947-run
+components:
+  schemas: {}
+  securitySchemes: {}
+servers:
+  - url: https://apis.starrycognition.cn/api
+    description: 开发环境
+  - url: http://127.0.0.1:8787/api
+    description: 测试环境
+  - url: http://prod-cn.your-api-server.com
+    description: 正式环境
+security: []
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 发送消息
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.0.1
+info:
+  title: ''
+  description: ''
+  version: 1.0.0
+paths:
+  /messages/add:
+    post:
+      summary: 发送消息
+      deprecated: false
+      description: ''
+      tags:
+        - 聊天页面
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            example:
+              user: starry
+              msg: 测试文本
+              likes: 666
+              created_at: 2025
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                    required:
+                      - id
+                required:
+                  - code
+                  - message
+                  - data
+          headers: {}
+          x-apifox-name: 成功
+      security: []
+      x-apifox-folder: 聊天页面
+      x-apifox-status: developing
+      x-run-in-apifox: https://app.apifox.com/web/project/7261810/apis/api-366174409-run
+components:
+  schemas: {}
+  securitySchemes: {}
+servers:
+  - url: https://apis.starrycognition.cn/api
+    description: 开发环境
+  - url: http://127.0.0.1:8787/api
+    description: 测试环境
+  - url: http://prod-cn.your-api-server.com
+    description: 正式环境
+security: []
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 删除消息
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.0.1
+info:
+  title: ''
+  description: ''
+  version: 1.0.0
+paths:
+  /messages/del:
+    post:
+      summary: 删除消息
+      deprecated: false
+      description: ''
+      tags:
+        - 聊天页面
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            example:
+              id: 53
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: 'null'
+                required:
+                  - code
+                  - message
+                  - data
+          headers: {}
+          x-apifox-name: 成功
+      security: []
+      x-apifox-folder: 聊天页面
+      x-apifox-status: developing
+      x-run-in-apifox: https://app.apifox.com/web/project/7261810/apis/api-366255657-run
+components:
+  schemas: {}
+  securitySchemes: {}
+servers:
+  - url: https://apis.starrycognition.cn/api
+    description: 开发环境
+  - url: http://127.0.0.1:8787/api
+    description: 测试环境
+  - url: http://prod-cn.your-api-server.com
+    description: 正式环境
+security: []
+
+```
+
+
+
